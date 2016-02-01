@@ -27,6 +27,14 @@
     auto-complete
     ruby-mode
     enh-ruby-mode
+    ruby-electric
+    rspec-mode
+    mode-compile
+    rinari
+;;    rthml-Mode
+    ruby-block
+    flycheck
+;;    hlinum
     ))
 
 (let ((not-installed (loop for x in installing-package-list
@@ -91,7 +99,7 @@
 (setq cpp-unknown-writable 't)
 ;;  symbol              true            false           writable
 ;;  -----------------------------------------------------------------
-;;  0                   light gray      default         both
+;;  0                   Light gray      default         both
 ;;  1                   default         light gray      both
 (setq cpp-edit-list
       '((#("1" 0 1
@@ -108,6 +116,39 @@
 ;;    (+ 2 3);dammy
 ;;    (load (expand-file-name "~/.emacs.d/key_bind.el") nil t nil)
 ;;)
+
+;; Ruby - setting
+
+;; error
+;; (require 'rinari)			;
+(add-hook 'rhtml-mode-hook
+	  (lambda () (rinari-launch)))
+
+;; ruby-block を導入すると, end に対応する行をハイライトしてくれる.
+(require 'ruby-block)
+(ruby-block-mode t)
+(setq ruby-block-highlight-toggle t)
+
+;; ruby-electric はかっこや do end などの対応関係を自動で補正してくれる.
+(require 'ruby-electric)
+(add-hook 'ruby-mode-hook '(lambda () (ruby-electric-mode t)))
+(setq ruby-electric-expand-delimiters-list nil)
+
+(require 'enh-ruby-mode)
+;(autoload 'ruby-mode "ruby-mode"
+;  "Mode for editing ruby source files." t )
+(add-to-list 'auto-mode-alist '("\\.rb$latex " . ruby-mode))
+(add-to-list 'auto-mode-alist '("Capfile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
+
+(require 'flycheck)
+(setq flycheck-check-syntax-automatically '(mode-enabled save))
+(add-hook 'ruby-mode-hook 'flycheck-mode)
+
+;; 現在の行をハイライトする。
+;;(require 'hlinum)
+;;(hlinum-activate)
+;(global-linum-mode t)
 
 ;; このファイルに間違いがあった場合に全てを無効にします
 (put 'eval-expression 'disabled nil)
