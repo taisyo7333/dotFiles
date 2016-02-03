@@ -145,6 +145,15 @@
 (setq flycheck-check-syntax-automatically '(mode-enabled save))
 (add-hook 'ruby-mode-hook 'flycheck-mode)
 
+;; 現在、どこの関数内にいるかを常に画面上部に表示する
+(which-func-mode t)
+;; 全てのメジャーモードに対して which-func-modeを適用する。
+(setq which-func-modes t)
+
+;; 画面上部に表示する場合は、下２桁が必要。
+(delete (assoc 'which-func-mode mode-line-format) mode-line-format)
+(setq-default header-line-format '(which-func-mode ("" which-func-format))) 
+
 ;; 現在の行をハイライトする。
 ;;(require 'hlinum)
 ;;(hlinum-activate)
