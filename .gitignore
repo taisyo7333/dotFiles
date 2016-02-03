@@ -1,0 +1,8 @@
+# Compiled
+*.elc
+# Packaging
+.cask
+
+
+.emacs.d/auto-save-list/ 
+.emacs.d/site-lisp/ 
