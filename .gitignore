@@ -4,6 +4,6 @@
 .cask
 
 
-.emacs.d/auto-save-list/ 
-.emacs.d/site-lisp/ 
-.emacs.d/elpa/
+.emacs.d/auto-save-list/*
+.emacs.d/site-lisp/*
+.emacs.d/elpa/*
