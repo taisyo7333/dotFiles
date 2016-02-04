@@ -1,5 +1,5 @@
 (add-to-list 'load-path "~/.emacs.d/init.d")
-(load "~/.emacs.d/init.d/init-config")
+;(load "~/.emacs.d/init.d/init-config")
 
 (require 'init-packages)
 
@@ -121,6 +121,12 @@
 ;;(require 'hlinum)
 ;;(hlinum-activate)
 ;(global-linum-mode t)
+
+;; http://qiita.com/megane42/items/ee71f1ff8652dbf94cf7
+;; rainbow-delimitersを使うための設定
+(require 'rainbow-delimiters)
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+
 
 ;
 ;describe-key ;キーに割り当てられている関数を知ることができる

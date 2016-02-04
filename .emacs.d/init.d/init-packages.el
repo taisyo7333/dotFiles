@@ -30,7 +30,7 @@
     buttercup
     enh-ruby-mode
     flycheck
-    flycheck-pos-tip ; display flycheck by tooltip
+;;    flycheck-pos-tip ; display flycheck by tooltip
     ;;flymake      ; a universal on-the-fly syntax checker
     ;;flymake-ruby ; flymake for ruby
     ;;flymake-yaml ; flymake for yaml
@@ -42,9 +42,11 @@
     inf-ruby
     mode-compile
     markdown-mode
-    ;; open-junk-file 
+;;     open-junk-file 
 ;;    rthml-Mode
 ;;    rcodetools  ; gem install
+    rainbow-delimiters
+;;    rainbow-mode
     rinari
     rspec-mode
     robe
