@@ -39,6 +39,7 @@
     markdown-mode
     ;; open-junk-file 
 ;;    rthml-Mode
+;;    rcodetools  ; gem install
     rinari
     rspec-mode
     robe

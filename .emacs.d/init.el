@@ -13,11 +13,13 @@
 ;; Robeを起動させたいバッファで下記の作業を行う。
 ;; 必須要件
 ;; gem install pry  
+;; gem install rcodetools   ;  .elファイルはインストール先からget.
 ;; pryをGemfileに記載しインストールが必要
 ;; 作業
 ;; M-x inf-ruby ( 初回のみ )
 ;; M-x robe-mode
 ;; M-x robe-start
+
 
 (autoload 'ruby-mode "ruby-mode" "Mode for editing ruby source files" t)
 (add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
@@ -25,7 +27,7 @@
 (add-hook 'ruby-mode-hook '(lambda ()
                              (require 'rcodetools)
                              (require 'anything-rcodetools)
-                             (require 'myrurema)
+;                             (require 'myrurema)  ;; どうやって追加するか不明
                              (load-auto-complete)  ;; 追加
                              (define-key ruby-mode-map "\M-c" 'rct-complete-symbol)
                              (define-key ruby-mode-map "\M-d" 'xmp)
@@ -44,15 +46,16 @@
 
   (setq ac-auto-show-menu 0.5)
   (setq ac-menu-height 20)
-
   (robe-mode))
 
 ; robe
 (autoload 'robe-mode "robe" "Code navigation, documentation lookup and completion for Ruby" t nil)
 (autoload 'ac-robe-setup "ac-robe" "auto-complete robe" nil nil)
-(add-hook 'robe-mode-hook 'ac-robe-setup)
-
-
+;(add-hook 'robe-mode-hook 'ac-robe-setup)
+(add-hook 'robe-mode-hook (lambda ()
+			    (ac-robe-setup)
+			    (robe-start)
+			    ) )
 
 ;; このファイルに間違いがあった場合に全てを無効にします
 (put 'eval-expression 'disabled nil)
