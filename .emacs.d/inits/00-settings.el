@@ -47,7 +47,14 @@
 (setq display-time-24hr-format t)
 (display-time)
 
+;; 現在、どこの関数内にいるかを常に画面上部に表示する
+(which-func-mode t)
+;; 全てのメジャーモードに対して which-func-modeを適用する。
+(setq which-func-modes t)
 
+;; 画面上部に表示する場合は、下２桁が必要。
+(delete (assoc 'which-func-mode mode-line-format) mode-line-format)
+(setq-default header-line-format '(which-func-mode ("" which-func-format))) 
 
 ;; (setq explicit-shell-file-name "bash.exe")
 ;; (setq shell-file-name "sh.exe")

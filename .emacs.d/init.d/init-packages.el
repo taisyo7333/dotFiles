@@ -30,6 +30,11 @@
     buttercup
     enh-ruby-mode
     flycheck
+    flycheck-pos-tip ; display flycheck by tooltip
+    ;;flymake      ; a universal on-the-fly syntax checker
+    ;;flymake-ruby ; flymake for ruby
+    ;;flymake-yaml ; flymake for yaml
+    ;;flymake-json ; flymake for jason
     ;; google-c-style
     ;; haskell-mode
 ;;    hlinum
@@ -47,6 +52,7 @@
     ruby-block    
     ruby-mode
     ruby-electric
+    rubocop
     scss-mode
 
     web-mode
