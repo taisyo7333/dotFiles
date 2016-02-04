@@ -3,7 +3,9 @@
 # Packaging
 .cask
 
-
+.emacs.d/cache/*
 .emacs.d/auto-save-list/*
 .emacs.d/site-lisp/*
 .emacs.d/elpa/*
+
+.emacs.d/ac-comphist.dat
