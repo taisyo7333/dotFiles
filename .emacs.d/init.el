@@ -100,8 +100,8 @@
 
 ;; ruby-electric はかっこや do end などの対応関係を自動で補正してくれる.
 (require 'ruby-electric)
-(add-hook 'ruby-mode-hook '(lambda () (ruby-electric-mode t)))
-(setq ruby-electric-expand-delimiters-list nil)
+;(add-hook 'ruby-mode-hook '(lambda () (ruby-electric-mode t)))
+;(setq ruby-electric-expand-delimiters-list nil)
 
 (require 'enh-ruby-mode)
 ;(autoload 'ruby-mode "ruby-mode"
