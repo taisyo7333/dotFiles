@@ -28,6 +28,7 @@
 
     auto-complete
     buttercup
+    dash          ; depends on projectile
     enh-ruby-mode
     flycheck
 ;;    flycheck-pos-tip ; display flycheck by tooltip
@@ -43,6 +44,8 @@
     mode-compile
     markdown-mode
 ;;     open-junk-file 
+    projectile
+    projectile-rails
 ;;    rthml-Mode
 ;;    rcodetools  ; gem install
     rainbow-delimiters

@@ -128,6 +128,22 @@
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 
+; ++++[http://kotatu.org/blog/2014/02/28/starts-using-projectile-rails/]+++++++++
+(require 'projectile)
+(projectile-global-mode)
+
+(require 'projectile-rails)
+(add-hook 'projectile-mode-hook 'projectile-rails-on)
+
+;; rirariと同様のキーバインドを使う
+(define-key projectile-rails-mode-map (kbd "C-c ; f m") 'projectile-rails-find-current-model)
+(define-key projectile-rails-mode-map (kbd "C-c ; f c") 'projectile-rails-find-current-controller)
+(define-key projectile-rails-mode-map (kbd "C-c ; f v") 'projectile-rails-find-current-view)
+(define-key projectile-rails-mode-map (kbd "C-c ; f s") 'projectile-rails-find-current-spec)
+(define-key projectile-rails-mode-map (kbd "C-c ; c")   'projectile-rails-console)
+
+;---------[http://kotatu.org/blog/2014/02/28/starts-using-projectile-rails/]-----------
+
 ;
 ;describe-key ;キーに割り当てられている関数を知ることができる
 ;describe-function;関数を調べたいときに使う
