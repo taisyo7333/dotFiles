@@ -135,6 +135,9 @@
 (require 'projectile-rails)
 (add-hook 'projectile-mode-hook 'projectile-rails-on)
 
+;(setq projectile-completion-system 'helm)
+;(helm-projectile-on)
+
 ;; rirariと同様のキーバインドを使う
 (define-key projectile-rails-mode-map (kbd "C-c ; f m") 'projectile-rails-find-current-model)
 (define-key projectile-rails-mode-map (kbd "C-c ; f c") 'projectile-rails-find-current-controller)
@@ -143,6 +146,8 @@
 (define-key projectile-rails-mode-map (kbd "C-c ; c")   'projectile-rails-console)
 
 ;---------[http://kotatu.org/blog/2014/02/28/starts-using-projectile-rails/]-----------
+
+
 
 ;
 ;describe-key ;キーに割り当てられている関数を知ることができる

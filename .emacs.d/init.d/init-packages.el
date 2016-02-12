@@ -38,10 +38,11 @@
     ;;flymake-json ; flymake for jason
     ;; google-c-style
     ;; haskell-mode
+    helm
 ;;    hlinum
     init-loader
     inf-ruby
-    mode-compile
+    mode-compile   ; Depend on rspec-mode
     markdown-mode
 ;;     open-junk-file 
     projectile
@@ -51,7 +52,7 @@
     rainbow-delimiters
 ;;    rainbow-mode
     rinari
-    rspec-mode
+    rspec-mode  ; C-c , t : specmファイルからテスト対象のファイルへ飛べる
     robe
     ruby-compilation
     ruby-block    
