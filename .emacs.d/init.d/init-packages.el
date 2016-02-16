@@ -39,6 +39,7 @@
     ;; google-c-style
     ;; haskell-mode
     helm
+    helm-projectile
 ;;    hlinum
     init-loader
     inf-ruby

@@ -135,8 +135,9 @@
 (require 'projectile-rails)
 (add-hook 'projectile-mode-hook 'projectile-rails-on)
 
-;(setq projectile-completion-system 'helm)
-;(helm-projectile-on)
+;; C-c p h
+(setq projectile-completion-system 'helm)
+(helm-projectile-on)
 
 ;; rirariと同様のキーバインドを使う
 (define-key projectile-rails-mode-map (kbd "C-c ; f m") 'projectile-rails-find-current-model)
