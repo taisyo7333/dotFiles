@@ -142,7 +142,15 @@
 (define-key projectile-rails-mode-map (kbd "C-c ; f m") 'projectile-rails-find-current-model)
 (define-key projectile-rails-mode-map (kbd "C-c ; f c") 'projectile-rails-find-current-controller)
 (define-key projectile-rails-mode-map (kbd "C-c ; f v") 'projectile-rails-find-current-view)
-(define-key projectile-rails-mode-map (kbd "C-c ; f s") 'projectile-rails-find-current-spec)
+;;(define-key projectile-rails-mode-map (kbd "C-c ; f s") 'projectile-rails-find-current-spec)
+(define-key projectile-rails-mode-map (kbd "C-c ; f s") 'projectile-rails-find-current-stylesheet)
+(define-key projectile-rails-mode-map (kbd "C-c ; f t") 'projectile-rails-find-current-test)
+(define-key projectile-rails-mode-map (kbd "C-c ; f h") 'projectile-rails-find-current-helper)
+(define-key projectile-rails-mode-map (kbd "C-c ; f r") 'projectile-rails-find-current-resource)
+(define-key projectile-rails-mode-map (kbd "C-c ; f f") 'projectile-rails-find-current-fixture)
+(define-key projectile-rails-mode-map (kbd "C-c ; f j") 'projectile-rails-find-current-javascript)
+
+
 (define-key projectile-rails-mode-map (kbd "C-c ; c")   'projectile-rails-console)
 
 ;---------[http://kotatu.org/blog/2014/02/28/starts-using-projectile-rails/]-----------
