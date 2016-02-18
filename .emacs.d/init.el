@@ -169,6 +169,10 @@
 ;; JavaScript-mode's tab width is 2
 (setq js-indent-level 2)
 
+(require 'color-theme)
+(color-theme-initialize)
+(color-theme-robin-hood)
+
 ;
 ;describe-key ;キーに割り当てられている関数を知ることができる
 ;describe-function;関数を調べたいときに使う

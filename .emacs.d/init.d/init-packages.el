@@ -28,6 +28,7 @@
 
     auto-complete
     buttercup
+    color-theme
     dash          ; depends on projectile
     enh-ruby-mode
     flycheck
