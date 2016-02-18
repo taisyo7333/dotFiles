@@ -166,6 +166,8 @@
 (add-hook 'ido-setup-hook 'ido-define-keys)
 
 
+;; JavaScript-mode's tab width is 2
+(setq js-indent-level 2)
 
 ;
 ;describe-key ;キーに割り当てられている関数を知ることができる
