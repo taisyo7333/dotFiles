@@ -184,19 +184,22 @@
   (add-hook 'projectile-after-switch-project-hook 'mjs/setup-local-eslint))
 
 (require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.jsx?$" . web-mode))
-
-(with-eval-after-load 'web-mode
-  ;; set reasoable indentation for web-mode
-  (setq web-mode-markup-indent-offset 2
-        web-mode-css-indent-offset 2
-        web-mode-code-indent-offset 2)
-
-  (with-eval-after-load 'flycheck
-    (push 'web-mode (flycheck-checker-get 'javascript-eslint 'modes))))
-
-(with-eval-after-load 'js
-  (setq js-indent-level 2))
+(add-to-list 'auto-mode-alist '("\\.jsx?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html\?\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.xml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.json\\'" . web-mode))
+(add-hook 'web-mode-hook
+          (lambda ()
+            (setq web-mode-markup-indent-offset 2)
+            (setq web-mode-css-indent-offset 2)
+            (setq web-mode-code-indent-offset 2)
+            (setq web-mode-enable-current-column-highlight t)
+            (setq web-mode-enable-current-element-highlight t)
+            (if (equal web-mode-content-type "javascript")
+                (web-mode-set-content-type "jsx")
+              (message "now set to: %s" web-mode-content-type)
+              )))
 
 (defvar flycheck-javascript-eslint-executable)
 (defun mjs/setup-local-eslint ()
