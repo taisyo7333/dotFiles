@@ -19,7 +19,7 @@
 ;; http://codeout.hatenablog.com/entry/2014/02/04/210237
 ;; Robeを起動させたいバッファで下記の作業を行う。
 ;; 必須要件
-;; gem install pry  
+;; gem install pry
 ;; gem install rcodetools   ;  .elファイルはインストール先からget.
 ;; pryをGemfileに記載しインストールが必要
 ;; 作業
@@ -38,15 +38,15 @@
                              (require 'rcodetools)          ; gem install rcodetools
                              (require 'anything-rcodetools) ; gem install rcodetools
 ;                             (require 'myrurema)  ;; どうやって追加するか不明
-			     (require 'rubocop)
+                             (require 'rubocop)
                              (load-auto-complete)  ;; 追加
                              (define-key ruby-mode-map "\M-c" 'rct-complete-symbol)
                              (define-key ruby-mode-map "\M-d" 'xmp)
                              (setq ruby-deep-indent-paren-style nil)
-;			     (rubocop-mode t)
-;			     (setq flyckeck-checker 'ruby-rubocop)
-			     (flycheck-mode 1)
-			     ))
+;                            (rubocop-mode t)
+;                            (setq flyckeck-checker 'ruby-rubocop)
+                             (flycheck-mode 1)
+                             ))
 
 ; auto-complete
 (defun load-auto-complete ()
@@ -68,11 +68,11 @@
 (autoload 'ac-robe-setup "ac-robe" "auto-complete robe" nil nil)
 ;(add-hook 'robe-mode-hook 'ac-robe-setup)
 (add-hook 'robe-mode-hook (lambda ()
-			    (ac-robe-setup)
-			    (robe-start)
-			    ) )
+                            (ac-robe-setup)
+                            (robe-start)
+                            ) )
 
-; flycheck & rubocop 
+; flycheck & rubocop
 ; http://futurismo.biz/archives/2213
 (flycheck-define-checker ruby-rubocop
   "A Ruby syntax and style checker using the RuboCop tool."
@@ -89,9 +89,9 @@
    :modes (enh-ruby-mode motion-mode))
 
 ;; error
-;; (require 'rinari)			;
+;; (require 'rinari);
 (add-hook 'rhtml-mode-hook
-	  (lambda () (rinari-launch)))
+          (lambda () (rinari-launch)))
 
 ;; ruby-block を導入すると, end に対応する行をハイライトしてくれる.
 (require 'ruby-block)
@@ -165,18 +165,79 @@
   (define-key ido-completion-map (kbd "C-p") 'ido-prev-match))
 (add-hook 'ido-setup-hook 'ido-define-keys)
 
-
-;; JavaScript-mode's tab width is 2
-(setq js-indent-level 2)
-
 (require 'color-theme)
 (color-theme-initialize)
 (color-theme-robin-hood)
+
+;; JavaScript-mode's tab width is 2
+(setq js-indent-level 2)
+;(add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
+;(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-jsx-mode))
+;(flycheck-add-mode 'javascript-eslint 'js2-jsx-mode)
+;(add-hook 'js2-jsx-mode-hook 'flycheck-mode)
+;(setq tab-width 2)
+
+(require 'nvm)
+(nvm-use (caar (last (nvm--installed-versions))))
+
+(with-eval-after-load 'projectile
+  (add-hook 'projectile-after-switch-project-hook 'mjs/setup-local-eslint))
+
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.jsx?$" . web-mode))
+
+(with-eval-after-load 'web-mode
+  ;; set reasoable indentation for web-mode
+  (setq web-mode-markup-indent-offset 2
+        web-mode-css-indent-offset 2
+        web-mode-code-indent-offset 2)
+
+  (with-eval-after-load 'flycheck
+    (push 'web-mode (flycheck-checker-get 'javascript-eslint 'modes))))
+
+(with-eval-after-load 'js
+  (setq js-indent-level 2))
+
+(defvar flycheck-javascript-eslint-executable)
+(defun mjs/setup-local-eslint ()
+    "If ESLint found in node_modules directory - use that for flycheck.
+Intended for use in PROJECTILE-AFTER-SWITCH-PROJECT-HOOK."
+    (interactive)
+    (let ((local-eslint (expand-file-name "./node_modules/.bin/eslint")))
+      (setq flycheck-javascript-eslint-executable
+            (and (file-exists-p local-eslint) local-eslint))))
 
 ;
 ;describe-key ;キーに割り当てられている関数を知ることができる
 ;describe-function;関数を調べたいときに使う
 ;apropos 検索キーを含む変数、関数名を列挙する
+
+
+;;
+;; whitespace visible
+;;
+(require 'whitespace)
+(setq whitespace-style '(face       ; faceで可視化
+                         trailing   ; 行末
+                         tabs       ; タブ
+                         empty      ; 行頭/末尾の空行
+                         space-mark ; 表示のマッピング
+                         tab-mark
+                         ))
+(setq whitespace-display-mappings
+      '((space-mark ?\x3000 [?\□])
+        (tab-mark ?\t [?\u00BB ?\t] [?\\ ?\t])
+        ))
+(global-whitespace-mode t)
+
+; Use whitespace instead of Tab.
+(setq-default indent-tabs-mode nil)       ; インデントはタブではなく、スペースを使用
+(setq-default show-trailing-whitespace t) ; 行末の空白をハイライト
+(add-hook 'font-lock-mode-hook            ; タブをハイライト
+          (lambda ()
+            (font-lock-add-keywords
+             nil
+             '(("\t" 0 'trailing-whitespace prepend)))))
 
 ;; このファイルに間違いがあった場合に全てを無効にします
 (put 'eval-expression 'disabled nil)

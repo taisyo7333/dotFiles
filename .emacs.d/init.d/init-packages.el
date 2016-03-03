@@ -44,8 +44,10 @@
 ;;    hlinum
     init-loader
     inf-ruby
+    js2-mode
     mode-compile   ; Depend on rspec-mode
     markdown-mode
+    nvm
 ;;     open-junk-file 
     projectile
     projectile-rails
