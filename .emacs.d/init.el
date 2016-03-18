@@ -253,6 +253,14 @@ Intended for use in PROJECTILE-AFTER-SWITCH-PROJECT-HOOK."
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
 
+
+;; Window
+(global-set-key [M-left] 'shrink-window-horizontally)
+(global-set-key [M-right] 'enlarge-window-horizontally)
+
+(global-set-key [M-up] 'shrink-window)
+(global-set-key [M-down] 'enlarge-window)
+
 ;; このファイルに間違いがあった場合に全てを無効にします
 (put 'eval-expression 'disabled nil)
 
