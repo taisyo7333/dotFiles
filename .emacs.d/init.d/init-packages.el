@@ -47,6 +47,7 @@
     js2-mode
     mode-compile   ; Depend on rspec-mode
     markdown-mode
+    neotree
     nvm
 ;;     open-junk-file 
     projectile

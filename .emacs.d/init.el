@@ -242,6 +242,17 @@ Intended for use in PROJECTILE-AFTER-SWITCH-PROJECT-HOOK."
              nil
              '(("\t" 0 'trailing-whitespace prepend)))))
 
+
+;; http://d.hatena.ne.jp/higepon/20080731/1217491155
+;; Use auto-insert
+(require 'autoinsert)
+
+
+;; neotree
+(add-to-list 'load-path "./neotree")
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
+
 ;; このファイルに間違いがあった場合に全てを無効にします
 (put 'eval-expression 'disabled nil)
 
