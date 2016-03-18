@@ -34,6 +34,7 @@
 (add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
 
 (add-to-list 'interpreter-mode-alist '("ruby" . ruby-mode))
+
 (add-hook 'ruby-mode-hook '(lambda ()
                              (require 'rcodetools)          ; gem install rcodetools
                              (require 'anything-rcodetools) ; gem install rcodetools
@@ -108,15 +109,6 @@
 ;  "Mode for editing ruby source files." t )
 
 
-; auto-completeと重なるため、ひとまず無効化する
-; http://qiita.com/senda-akiha/items/cddb02cfdbc0c8c7bc2b
-; view by tooltip
-;(eval-after-load 'flycheck
-;  '(custom-set-variables
-;    '(flycheck-display-errors-function #'flycheck-pos-tip-error-messages
-;)))
-
-
 ;; 現在の行をハイライトする。
 ;;(require 'hlinum)
 ;;(hlinum-activate)
@@ -183,7 +175,17 @@
 (with-eval-after-load 'projectile
   (add-hook 'projectile-after-switch-project-hook 'mjs/setup-local-eslint))
 
+
 (require 'web-mode)
+(add-hook 'web-mode-hook 'flycheck-mode)
+; auto-completeと重なるため、ひとまず無効化する
+; http://qiita.com/senda-akiha/items/cddb02cfdbc0c8c7bc2b
+; view by tooltip
+(eval-after-load 'flycheck
+  '(custom-set-variables
+    '(flycheck-disabled-checkers '(javascript-jshint javascript-jscs))
+    ))
+
 (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html\?\'" . web-mode))
@@ -198,8 +200,7 @@
             (setq web-mode-enable-current-element-highlight t)
             (if (equal web-mode-content-type "javascript")
                 (web-mode-set-content-type "jsx")
-              (message "now set to: %s" web-mode-content-type)
-              )))
+                (message "now set to: %s" web-mode-content-type))))
 
 (defvar flycheck-javascript-eslint-executable)
 (defun mjs/setup-local-eslint ()
