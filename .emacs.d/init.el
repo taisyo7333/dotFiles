@@ -191,6 +191,9 @@
 (add-to-list 'auto-mode-alist '("\\.html\?\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.xml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.json\\'" . web-mode))
+
+(add-to-list 'web-mode-comment-formats '("jsx" . "//" ))
+
 (add-hook 'web-mode-hook
           (lambda ()
             (setq web-mode-markup-indent-offset 2)
