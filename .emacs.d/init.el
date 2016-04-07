@@ -192,6 +192,7 @@
 (add-to-list 'auto-mode-alist '("\\.xml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.json\\'" . web-mode))
 
+; JSX /* ~~ */ -- > //
 (add-to-list 'web-mode-comment-formats '("jsx" . "//" ))
 
 (add-hook 'web-mode-hook
