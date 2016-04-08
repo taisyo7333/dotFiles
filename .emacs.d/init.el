@@ -175,7 +175,7 @@
 (with-eval-after-load 'projectile
   (add-hook 'projectile-after-switch-project-hook 'mjs/setup-local-eslint))
 
-
+; http://web-mode.org/
 (require 'web-mode)
 (add-hook 'web-mode-hook 'flycheck-mode)
 ; auto-completeと重なるため、ひとまず無効化する
