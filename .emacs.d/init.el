@@ -177,20 +177,62 @@
 
 ; http://web-mode.org/
 (require 'web-mode)
-(add-hook 'web-mode-hook 'flycheck-mode)
+;;(add-hook 'web-mode-hook 'flycheck-mode)
 ; auto-completeと重なるため、ひとまず無効化する
 ; http://qiita.com/senda-akiha/items/cddb02cfdbc0c8c7bc2b
 ; view by tooltip
-(eval-after-load 'flycheck
-  '(custom-set-variables
-    '(flycheck-disabled-checkers '(javascript-jshint javascript-jscs))
-    ))
+;; (eval-after-load 'flycheck
+;;   '(custom-set-variables
+;;     '(flycheck-disabled-checkers '(javascript-jshint javascript-jscs))
+;;     ))
 
+;; Usage flycheck using eslint
+;; C-c ! l  : see full list of errors in a buffer.
+;; C-c ! n  : next error
+;; C-c ! p  : previous error
+
+;; http://codewinds.com/blog/2015-04-02-emacs-flycheck-eslint-jsx.html
+;; use web-mode for .jsx files
 (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html\?\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.xml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.json\\'" . web-mode))
+
+
+;; turn on flychecking globally
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+;; disable jshint since we prefer eslint checking
+(setq-default flycheck-disable-checkers
+              (append flycheck-disabled-checkers
+                      '(javascript-jshint)))
+
+;; use eslint with web-mode for jsx files
+(flycheck-add-mode 'javascript-eslint 'web-mode)
+
+;; customize flycheck temp file prefix
+(setq-default flycheck-temp-prefix ".flycheck")
+
+;; disable json-jsonlint checking for json files
+(setq-default flycheck-disabled-checkers
+              (append flycheck-disable-checkers
+                      '(json-jsonlint)))
+
+;; https://github.com/purcell/exec-path-from-shell
+;; only need exec-path-from-shell on OSX
+;; this hopefully sets up path and other vars better
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
+
+;; for better jsx syntax-highlighting in web-mode
+;; - courtesy of Patrick @halbtuerke
+(defadvice web-mode-highlight-part (around tweak-jsx activate)
+  (if (equal web-mode-content-type "jsx")
+    (let ((web-mode-enable-part-face nil))
+      ad-do-it)
+    ad-do-it))
+
 
 ; JSX /* ~~ */ -- > //
 (add-to-list 'web-mode-comment-formats '("jsx" . "//" ))

@@ -31,6 +31,7 @@
     color-theme
     dash          ; depends on projectile
     enh-ruby-mode
+    exec-path-from-shell
     flycheck
 ;;    flycheck-pos-tip ; display flycheck by tooltip
     ;;flymake      ; a universal on-the-fly syntax checker
@@ -45,6 +46,7 @@
     init-loader
     inf-ruby
     js2-mode
+    json-mode
     mode-compile   ; Depend on rspec-mode
     markdown-mode
     neotree
