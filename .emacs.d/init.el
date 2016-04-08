@@ -266,6 +266,11 @@ Intended for use in PROJECTILE-AFTER-SWITCH-PROJECT-HOOK."
 (global-set-key [M-up] 'shrink-window)
 (global-set-key [M-down] 'enlarge-window)
 
+;; open buffer windwow
+(global-set-key [f5] 'buffer-menu)
+; ohter-window
+(global-set-key [f9] 'other-window)
+
 ;; このファイルに間違いがあった場合に全てを無効にします
 (put 'eval-expression 'disabled nil)
 
