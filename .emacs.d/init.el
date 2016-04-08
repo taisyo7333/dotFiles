@@ -195,16 +195,29 @@
 ; JSX /* ~~ */ -- > //
 (add-to-list 'web-mode-comment-formats '("jsx" . "//" ))
 
-(add-hook 'web-mode-hook
-          (lambda ()
-            (setq web-mode-markup-indent-offset 2)
-            (setq web-mode-css-indent-offset 2)
-            (setq web-mode-code-indent-offset 2)
-            (setq web-mode-enable-current-column-highlight t)
-            (setq web-mode-enable-current-element-highlight t)
-            (if (equal web-mode-content-type "javascript")
-                (web-mode-set-content-type "jsx")
-                (message "now set to: %s" web-mode-content-type))))
+(defun my-web-mode-hook ()
+  "Hooks for Web mode."
+  (setq web-mode-enable-current-column-highlight t)
+  (setq web-mode-enable-current-element-highlight t)
+  (setq web-mode-html-offset   2)
+  (setq web-mode-css-offset    2)
+  (setq web-mode-script-offset 2)
+  (setq web-mode-php-offset    2)
+  (setq web-mode-java-offset   2)
+  (setq web-mode-asp-offset    2)
+  (setq web-mode-attr-indent-offset 2)
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-sql-indent-offset 2)
+  (setq indent-tabs-mode nil)
+  (setq tab-width 2)
+  (if (equal web-mode-content-type "javascript")
+      (web-mode-set-content-type "jsx")
+    (message "now set to: %s" web-mode-content-type)))
+
+(add-hook 'web-mode-hook 'my-web-mode-hook)
+
 
 (defvar flycheck-javascript-eslint-executable)
 (defun mjs/setup-local-eslint ()
