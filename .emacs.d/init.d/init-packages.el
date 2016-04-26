@@ -25,7 +25,7 @@
     ;; anything-complete ; is not available
     ;; anything-config
     ;;anything-match-plugin
-
+    anzu
     auto-complete
     buttercup
     color-theme
@@ -67,7 +67,9 @@
     ruby-electric
     rubocop
     scss-mode
-
+    tern
+    tern-auto-complete
+    visual-regexp
     web-mode
     yaml-mode
     ))

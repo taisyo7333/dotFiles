@@ -235,7 +235,7 @@
 
 
 ; JSX /* ~~ */ -- > //
-(add-to-list 'web-mode-comment-formats '("jsx" . "//" ))
+(add-to-list 'web-mode-comment-formats '("jsx" . "// " ))
 
 (defun my-web-mode-hook ()
   "Hooks for Web mode."
@@ -329,7 +329,16 @@ Intended for use in PROJECTILE-AFTER-SWITCH-PROJECT-HOOK."
 ;; このファイルに間違いがあった場合に全てを無効にします
 (put 'eval-expression 'disabled nil)
 
+;; anzu
+(global-anzu-mode +1)
+
+(custom-set-variables
+ '(anzu-mode-lighter "")
+ '(anzu-deactivate-region t)
+ '(anzu-search-threshold 1000))
 
 
-
-
+;; ;;(add-to-list 'load-path "folder-in-which-visual-regexp-files-are-in/") ;; if the files are not already in the load path
+;; (require 'visual-regexp)
+;; (define-key global-map (kbd "C-c r") 'vr/replace)
+;; (define-key global-map (kbd "C-c q") 'vr/query-replace)
