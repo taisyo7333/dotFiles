@@ -342,3 +342,11 @@ Intended for use in PROJECTILE-AFTER-SWITCH-PROJECT-HOOK."
 ;; (require 'visual-regexp)
 ;; (define-key global-map (kbd "C-c r") 'vr/replace)
 ;; (define-key global-map (kbd "C-c q") 'vr/query-replace)
+
+;; Aspell
+(setq-default ispell-program-name "aspell")
+(eval-after-load "ispell"
+ '(add-to-list 'ispell-skip-region-alist '("[^\000-\377]+")))
+;;
+(global-set-key (kbd "C-M-$") 'ispell-complete-word)
+
