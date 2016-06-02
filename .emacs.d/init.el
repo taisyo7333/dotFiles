@@ -350,3 +350,30 @@ Intended for use in PROJECTILE-AFTER-SWITCH-PROJECT-HOOK."
 ;;
 (global-set-key (kbd "C-M-$") 'ispell-complete-word)
 
+;; http://sakito.jp/emacs/emacsshell.html
+(require 'multi-term)
+
+;; export LANG=ja_JP.UTF-8
+;; export LESSCHARSET=utf-8
+(setenv "LANG" "ja_JP.UTF-8")
+(setenv "LESSCHARSET" "utf-8")
+
+
+;; より下に記述した物が PATH の先頭に追加されます
+(dolist (dir (list
+              "/sbin"
+              "/usr/sbin"
+              "/bin"
+              "/usr/bin"
+              "/opt/local/bin"
+              "/sw/bin"
+              "/usr/local/bin"
+              (expand-file-name "~/bin")
+              (expand-file-name "~/.emacs.d/bin")
+              ))
+ ;; PATH と exec-path に同じ物を追加します
+ (when (and (file-exists-p dir) (not (member dir exec-path)))
+   (setenv "PATH" (concat dir ":" (getenv "PATH")))
+   (setq exec-path (append (list dir) exec-path))))
+
+(setenv "MANPATH" (concat "/usr/local/man:/usr/share/man:/Developer/usr/share/man:/sw/share/man" (getenv "MANPATH")))

@@ -49,6 +49,7 @@
     json-mode
     mode-compile   ; Depend on rspec-mode
     markdown-mode
+    multi-term
     neotree
     nvm
 ;;     open-junk-file 
