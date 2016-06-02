@@ -380,8 +380,8 @@ Intended for use in PROJECTILE-AFTER-SWITCH-PROJECT-HOOK."
 
 ;; shell の存在を確認
 (defun skt:shell ()
-  (or (executable-find "bash")
-      (executable-find "zsh")
+  (or (executable-find "zsh")
+      (executable-find "bash")
       ;; (executable-find "f_zsh") ;; Emacs + Cygwin を利用する人は Zsh の代りにこれにしてください
       ;; (executable-find "f_bash") ;; Emacs + Cygwin を利用する人は Bash の代りにこれにしてください
       (executable-find "cmdproxy")
@@ -422,7 +422,7 @@ Intended for use in PROJECTILE-AFTER-SWITCH-PROJECT-HOOK."
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 ;; multi-term setting
-(add-to-list 'term-unbind-key-list '"M-x")
+;; (add-to-list 'term-unbind-key-list '"M-x") 
 
 (add-hook 'term-mode-hook
          '(lambda ()
