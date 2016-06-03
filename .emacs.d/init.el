@@ -422,7 +422,11 @@ Intended for use in PROJECTILE-AFTER-SWITCH-PROJECT-HOOK."
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 ;; multi-term setting
-;; (add-to-list 'term-unbind-key-list '"M-x") 
+(setq term-unbind-key-list (remove '"C-x" term-unbind-key-list))
+(setq term-unbind-key-list (remove '"C-c" term-unbind-key-list))
+(setq term-unbind-key-list (remove '"C-z" term-unbind-key-list))
+
+
 
 (add-hook 'term-mode-hook
          '(lambda ()
@@ -432,5 +436,8 @@ Intended for use in PROJECTILE-AFTER-SWITCH-PROJECT-HOOK."
             (define-key term-raw-map (kbd "C-y") 'term-paste)
             ))
 
-(global-set-key (kbd "C-c n") 'multi-term-next)
-(global-set-key (kbd "C-c p") 'multi-term-prev)
+;; (global-set-key (kbd "C-c n") 'multi-term-next)
+;; (global-set-key (kbd "C-c p") 'multi-term-prev)
+
+(global-set-key [f3] 'multi-term-prev)
+(global-set-key [f4] 'multi-term-next)
