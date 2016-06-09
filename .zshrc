@@ -21,9 +21,14 @@ colors
 bindkey -e
 
 # ヒストリの設定
-HISTFILE=~/.zsh_history
-HISTSIZE=1000000
-SAVEHIST=1000000
+HISTFILE=~/.zsh_history                  #コマンド履歴ファイル
+HISTSIZE=1000000                         #履歴最大サイズ
+SAVEHIST=1000000                         #履歴の保存数
+autoload    history-search-end           #コマンド履歴検索の有効
+setopt      hist_ignore_dups             #直前と同じコマンドを履歴に残さない
+setopt      share_history                #複数ターミナル間でコマンド履歴を共有
+setopt      extended_history             #コマンド履歴に実行時間も追加
+function history-all { history -E 1 }    #コマンド履歴を全部表示
 
 # プロンプト
 # 1行表示
