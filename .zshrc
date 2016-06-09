@@ -8,6 +8,17 @@
 # 環境変数
 export LANG=ja_JP.UTF-8
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+
+export REACT_EDITOR=/usr/local/bin/emacs
+export EDITOR=/usr/local/bin/emacs
+
+# If you installed the SDK via Homebrew, otherwise ~/Library/Android/sdk
+export ANDROID_HOME=/usr/local/opt/android-sdk
+
+touch ~/.gradle/gradle.properties && echo "org.gradle.daemon=true" >> ~/.gradle/gradle.properties
+
 #for zsh-completions
 fpath=(/usr/local/share/zsh-completions $fpath)
 
