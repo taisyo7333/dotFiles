@@ -12,9 +12,7 @@ export LANG=ja_JP.UTF-8
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 # 色を使用出来るようにする
-# autoload -Uz colors
-# 補完機能を有効にする 
-autoload -Uz colors compinit compinit -u
+ autoload -Uz colors
 colors
 
 # emacs 風キーバインドにする
@@ -48,7 +46,7 @@ zstyle ':zle:*' word-style unspecified
 ########################################
 # 補完
 # 補完機能を有効にする
-autoload -Uz compinit
+autoload -Uz compinit compinit -u
 compinit
 
 # 補完で小文字でも大文字にマッチさせる
