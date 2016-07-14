@@ -159,7 +159,15 @@
 
 (require 'color-theme)
 (color-theme-initialize)
-(color-theme-robin-hood)
+;; (color-theme-robin-hood)
+;; http://aoe-tk.hatenablog.com/entry/20130210/1360506829
+;; (load-theme' misterioso t)
+;; http://syohex.hatenablog.com/entry/20121211/1355231365
+(load-theme 'deeper-blue t)
+(enable-theme 'deeper-blue)
+
+;; (load-theme 'molokai t)
+;; (enable-theme 'molokai)
 
 ;; JavaScript-mode's tab width is 2
 (setq js-indent-level 2)
@@ -425,6 +433,9 @@ Intended for use in PROJECTILE-AFTER-SWITCH-PROJECT-HOOK."
 (setq term-unbind-key-list (remove '"C-x" term-unbind-key-list))
 (setq term-unbind-key-list (remove '"C-c" term-unbind-key-list))
 (setq term-unbind-key-list (remove '"C-z" term-unbind-key-list))
+
+;;(setq term-bind-key-alist (remove '"C-c C-c" term-bind-key-alist))
+(add-to-list 'term-bind-key-alist '("C-c C-q" . save-buffers-kill-terminal))
 
 
 
