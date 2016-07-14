@@ -430,9 +430,12 @@ Intended for use in PROJECTILE-AFTER-SWITCH-PROJECT-HOOK."
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 ;; multi-term setting
-(setq term-unbind-key-list (remove '"C-x" term-unbind-key-list))
-(setq term-unbind-key-list (remove '"C-c" term-unbind-key-list))
-(setq term-unbind-key-list (remove '"C-z" term-unbind-key-list))
+;; terminal に直接通したいキーがある場合は、以下をアンコメントする
+(delete "<ESC>" term-unbind-key-list)
+(delete "M-x" term-unbind-key-list)
+(delete "C-x" term-unbind-key-list)
+(delete "C-c" term-unbind-key-list)
+(delete "C-z" term-unbind-key-list)
 
 ;;(setq term-bind-key-alist (remove '"C-c C-c" term-bind-key-alist))
 (add-to-list 'term-bind-key-alist '("C-c C-q" . save-buffers-kill-terminal))
