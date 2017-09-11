@@ -53,6 +53,7 @@
     neotree
     nvm
 ;;     open-junk-file 
+    pandoc
     projectile
     projectile-rails
 ;;    rthml-Mode

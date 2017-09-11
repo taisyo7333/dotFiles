@@ -1,3 +1,10 @@
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (add-to-list 'load-path "~/.emacs.d/init.d")
 ;(load "~/.emacs.d/init.d/init-config")
 
@@ -332,7 +339,7 @@ Intended for use in PROJECTILE-AFTER-SWITCH-PROJECT-HOOK."
 ;; open buffer windwow
 (global-set-key [f5] 'buffer-menu)
 ; ohter-window
-(global-set-key [f9] 'other-window)
+(global-set-key [f6] 'other-window)
 
 ;; このファイルに間違いがあった場合に全てを無効にします
 (put 'eval-expression 'disabled nil)
@@ -341,9 +348,16 @@ Intended for use in PROJECTILE-AFTER-SWITCH-PROJECT-HOOK."
 (global-anzu-mode +1)
 
 (custom-set-variables
- '(anzu-mode-lighter "")
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(anzu-deactivate-region t)
- '(anzu-search-threshold 1000))
+ '(anzu-mode-lighter "")
+ '(anzu-search-threshold 1000)
+ '(package-selected-packages
+   (quote
+    (pandoc yaml-mode web-mode visual-regexp tern-auto-complete scss-mode ruby-electric ruby-block rubocop rspec-mode robe rinari rainbow-delimiters projectile-rails nvm neotree multi-term mode-compile markdown-mode json-mode js2-mode init-loader helm-projectile flycheck exec-path-from-shell enh-ruby-mode color-theme buttercup anzu anything))))
 
 
 ;; ;;(add-to-list 'load-path "folder-in-which-visual-regexp-files-are-in/") ;; if the files are not already in the load path
@@ -455,3 +469,30 @@ Intended for use in PROJECTILE-AFTER-SWITCH-PROJECT-HOOK."
 
 (global-set-key [f3] 'multi-term-prev)
 (global-set-key [f4] 'multi-term-next)
+
+;; pandoc
+(pandoc-turn-on-advice-eww)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+
+;; bash/sh
+;; https://keramida.wordpress.com/2008/08/08/tweaking-shell-script-indentation-in-gnu-emacs/
+(defun gker-setup-sh-mode ()
+  "My own personal preferences for `sh-mode'."
+  ;; This is a custom function that sets up the parameters I usually
+  ;; prefer for `sh-mode'.  It is automatically added to
+  ;; `sh-mode-hook', but is can also be called interactively."
+  (interactive)
+  (setq sh-basic-offset 2
+        sh-indentation 2
+        ;; Tweak the indentation level of case-related syntax elements, to avoid
+        ;; excessive indentation because of the larger than default value of
+        ;; `sh-basic-offset' and other indentation options.
+        sh-indent-for-case-label 0
+        sh-indent-for-case-alt '+))
+(add-hook 'sh-mode-hook 'gker-setup-sh-mode)
