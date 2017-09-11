@@ -6,10 +6,13 @@ export ANDROID_HOME=/usr/local/opt/android-sdk
 
 export REACT_EDITOR=/usr/local/bin/emacs
 
+PATH=$HOME/.nodebrew/current/bin:$PATH
+
 touch ~/.gradle/gradle.properties && echo "org.gradle.daemon=true" >> ~/.gradle/gradle.properties
 
-alias emacs='/usr/local/Cellar/emacs/24.5/bin/emacs'
+alias emacs='/usr/local/Cellar/emacs/25.2/bin/emacs'
 alias ctags='/usr/local/Cellar/ctags/5.8_1/bin/ctags'
+alias tree='tree -N'
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 # $ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
