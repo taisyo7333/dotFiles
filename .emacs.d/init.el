@@ -496,3 +496,12 @@ Intended for use in PROJECTILE-AFTER-SWITCH-PROJECT-HOOK."
         sh-indent-for-case-label 0
         sh-indent-for-case-alt '+))
 (add-hook 'sh-mode-hook 'gker-setup-sh-mode)
+
+;;
+;; [required]
+;; $ brew install multimarkdown
+;;
+;; [usage]
+;; C-c C-c m :generate html to another buffer
+;; C-c C-c p ;generate html to browser
+(setq markdown-command "multimarkdown")
