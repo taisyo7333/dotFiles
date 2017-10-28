@@ -126,6 +126,7 @@
 (require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
+(helm-mode t)
 
 ; ++++[http://kotatu.org/blog/2014/02/28/starts-using-projectile-rails/]+++++++++
 (require 'projectile)
