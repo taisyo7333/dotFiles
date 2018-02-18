@@ -15,6 +15,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Ruby - setting
+;; do not insert the folloing comment
+;; # -*- coding: utf-8 -*-
+(setq ruby-insert-encoding-magic-comment nil)
+
 ; http://www.flycheck.org/manual/latest/Supported-languages.html#Supported-languages
 ; http://qiita.com/aKenjiKato/items/9ff1a153691e947113bb
 (require 'flycheck)
