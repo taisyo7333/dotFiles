@@ -185,6 +185,10 @@
 ;(add-hook 'js2-jsx-mode-hook 'flycheck-mode)
 ;(setq tab-width 2)
 
+;; for .es6 as javascript
+(add-to-list 'auto-mode-alist '("\\.es6\\'" . js2-mode))
+(flycheck-add-mode 'javascript-eslint 'js2-mode)
+
 (require 'nvm)
 (nvm-use (caar (last (nvm--installed-versions))))
 
