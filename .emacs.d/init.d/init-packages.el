@@ -51,6 +51,7 @@
     markdown-mode
     multi-term
     neotree
+    nginx-mode
     nvm
 ;;     open-junk-file 
     pandoc
