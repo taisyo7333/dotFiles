@@ -1,0 +1,15 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+#    name = 
+#    email = 
+[core]
+    editor = emacs -nw
+
+[alias]
+        l = log --decorate --oneline --graph
+        ll = log --decorate --stat --abbrev-commit
+        ls = log --decorate --graph
+        la = log --decorate --oneline --graph --all
+        lla = log --decorate --stat --abbrev-commit --all
+        lsa = log --decorate --graph --all
