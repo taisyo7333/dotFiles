@@ -515,7 +515,10 @@ Intended for use in PROJECTILE-AFTER-SWITCH-PROJECT-HOOK."
 ;; C-c C-c p ;generate html to browser
 (setq markdown-command "multimarkdown")
 
+;; TRAMPでバックアップファイルを作成しない
+(add-to-list 'backup-directory-alist
+             (cons tramp-file-name-regexp nil))
 
 
-
-
+;; line nubmer do not show ??
+(setq line-number-display-limit-width 10000)
