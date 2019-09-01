@@ -537,3 +537,4 @@ Intended for use in PROJECTILE-AFTER-SWITCH-PROJECT-HOOK."
 (add-hook 'ruby-mode-hook 'flyspell-mode)
 (add-hook 'sh-mode-hook 'flyspell-mode)
 (add-hook 'python-mode-hook 'flyspell-mode)
+(add-hook 'markdown-mode-hook 'flyspell-mode)
