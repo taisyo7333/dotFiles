@@ -516,6 +516,34 @@ Intended for use in PROJECTILE-AFTER-SWITCH-PROJECT-HOOK."
 (setq markdown-command "multimarkdown")
 
 
+;; ref: http://keisanbutsuriya.hateblo.jp/entry/2015/02/10/152543
+;; spell checker
+(setq-default ispell-program-name "aspell"
+              ;; force the English dictionary, support Camel Case spelling check (tested with aspell 0.6)
+              ispell-extra-args '("--sug-mode=ultra" "--lang=en_US" "--run-together" "--run-together-limit=5" "--run-together-min=2"))
 
 
 
+;; 日本語が含まれていてもスペルチェックできる設定
+(eval-after-load "ispell"
+  '(add-to-list 'ispell-skip-region-alist '("[^\000-\377]+")))
+
+
+(add-hook 'ruby-mode-hook 'flyspell-mode)
+(add-hook 'sh-mode-hook 'flyspell-mode)
+(add-hook 'python-mode-hook 'flyspell-mode)
+
+;; (mapc                                   ;; 以下flyspell-modeの設定
+;;  (lambda (hook)
+;;    (add-hook hook 'flyspell-prog-mode))
+;;  '(
+;;    c-mode-common-hook                 ;; ここに書いたモードではコメント領域のところだけ
+;;    emacs-lisp-mode-hook                 ;; flyspell-mode が有効になる
+;;    ))
+;; (mapc
+;;    (lambda (hook)
+;;      (add-hook hook
+;;                       '(lambda () (flyspell-mode 1))))
+;;    '( ;; flyspell-mode が有効になる
+;;      sh-mode-hook
+;;      ))
