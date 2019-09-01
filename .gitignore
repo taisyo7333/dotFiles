@@ -13,5 +13,5 @@
 .emacs.d/eshell/history
 .emacs.d/image-dired/*
 .emacs.d/url/cookies
-
+.emacs.d/url/cache
 zshrc
